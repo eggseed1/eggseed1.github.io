@@ -1,0 +1,111 @@
+name: Publish eggseed at root
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    - cron: '17 * * * *'
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+  actions: read
+
+concurrency:
+  group: eggseed-root-pages
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Check out root repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Import all eggseed files from the old repo (first run)
+        if: ${{ hashFiles('index.html') == '' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone --depth 1 https://github.com/eggseed1/eggseed.git /tmp/eggseed-original
+          rsync -a --exclude='.git/' --exclude='.github/' /tmp/eggseed-original/ ./
+          python3 - <<'PY'
+          from pathlib import Path
+          studio = Path("studio.js")
+          source = studio.read_text(encoding="utf-8")
+          old = 'var REPOSITORY = "eggseed1/eggseed";'
+          assert old in source, "Expected editor repository target was not found"
+          studio.write_text(source.replace(old, 'var REPOSITORY = "eggseed1/eggseed1.github.io";'), encoding="utf-8")
+
+          homepage = Path("index.html")
+          home = homepage.read_text(encoding="utf-8")
+          original = "stuff i collected over the years! like photos i have taken, some magazine scans and such ^_^"
+          revised = "little things i've kept along the way — old magazine pages, photographs, record sleeves, and other bits of paper i couldn't bear to throw out ^_^"
+          assert original in home, "Original filing cabinet text changed: update the migration copy first"
+          homepage.write_text(home.replace(original, revised), encoding="utf-8")
+
+          old_site = "https://eggseed1.github.io/eggseed/"
+          new_site = "https://eggseed1.github.io/"
+          changed = []
+          text_exts = {".html", ".js", ".css", ".json", ".md", ".txt", ".py", ".svg", ".yml", ".cjs"}
+          for path in Path(".").rglob("*"):
+              if not path.is_file() or path.suffix not in text_exts:
+                  continue
+              if path == Path("guestbook.js"):
+                  # Keep the old HTML Comment Box page ID so earlier guestbook
+                  # comments remain connected when readers visit the root URL.
+                  continue
+              contents = path.read_text(encoding="utf-8")
+              updated = contents.replace(old_site, new_site)
+              if updated != contents:
+                  path.write_text(updated, encoding="utf-8")
+                  changed.append(str(path))
+          assert Path("assets/records/imported/001.jpg").is_file()
+          assert Path("assets/records/imported/034.jpg").is_file()
+          assert Path("studio.html").is_file() and Path("tags.html").is_file()
+          print("Imported all site files and fixed root links. Updated:", ", ".join(changed))
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'Move eggseed site to root Pages domain'
+          git push origin HEAD:main
+
+      - name: Check website files and editor
+        run: |
+          test -s index.html
+          test -s assets/records/imported/001.jpg
+          test -s assets/records/imported/034.jpg
+          node --check ascii-maker.js
+          node --check studio.js
+          node --check tags.js
+          node scripts/test-studio.cjs
+          node scripts/test-record-collection.cjs
+          node scripts/test-lastfm-publish.cjs
+
+      - name: Refresh Last.fm text
+        env:
+          LASTFM_USERNAME: ${{ vars.LASTFM_USERNAME }}
+          LASTFM_API_KEY: ${{ secrets.LASTFM_API_KEY }}
+        run: python3 scripts/update_lastfm.py
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: Package complete website
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: .
+
+      - name: Deploy website
+        id: deployment
+        uses: actions/deploy-pages@v4
