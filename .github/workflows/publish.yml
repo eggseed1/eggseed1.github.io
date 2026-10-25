@@ -58,6 +58,8 @@ jobs:
           for path in Path(".").rglob("*"):
               if not path.is_file() or path.suffix not in text_exts:
                   continue
+              if ".github" in path.parts:
+                  continue
               if path == Path("guestbook.js"):
                   # Keep the old HTML Comment Box page ID so earlier guestbook
                   # comments remain connected when readers visit the root URL.
