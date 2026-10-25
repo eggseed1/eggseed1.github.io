@@ -306,6 +306,27 @@
         }).join("");
     }).join("\n");
   }
+  /* Keep the home-page recent writings shelf in sync with published blog posts. */
+  function buildRecentWritings(posts) {
+    var names = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
+    var latest = posts.filter(function (p) { return p.published && p.section === "blog"; })
+      .sort(compareByDate).slice(0, 2);
+    if (!latest.length) return '<p class="recent-writings-empty">no writings yet.</p>';
+    return '<ul class="recent-writings-list">' + latest.map(function (p) {
+      var date = clean(p.date), month = names[Number(date.slice(5, 7)) - 1] || "";
+      var label = month + " " + Number(date.slice(8, 10)) + ", " + date.slice(0, 4);
+      return '<li><time datetime="' + escapeHTML(date) + '">' + escapeHTML(label) + '</time>' +
+        '<a href="' + escapeHTML(p.file) + '">' + escapeHTML(p.title) + '</a></li>';
+    }).join("") + '</ul>';
+  }
+  function updateHomepageHTML(html, posts) {
+    var start = "<!-- STUDIO_RECENT_BLOG_START -->";
+    var end = "<!-- STUDIO_RECENT_BLOG_END -->";
+    var from = html.indexOf(start), to = html.indexOf(end);
+    if (from < 0 || to <= from) throw Error("Recent writings block is missing from index.html");
+    return html.slice(0, from + start.length) + "\n" +
+      buildRecentWritings(posts) + "\n" + html.slice(to);
+  }
   function updateIndexHTML(html, section, posts) {
     var open = "<!-- STUDIO_LIST_START:" + section + " -->";
     var close = "<!-- STUDIO_LIST_END:" + section + " -->";
@@ -341,6 +362,7 @@
       var posts = current.posts.filter(function (p) { return p.id !== id; }).concat([post]);
       var targets = Array.from(new Set(Object.keys(CONFIG).map(function (key) { return CONFIG[key].index; })));
       var indexes = await Promise.all(targets.map(fileFromGitHub));
+      var homepage = await fileFromGitHub("index.html");
       if (!template) template = await fileFromGitHub("templates/post.html");
       var branch = await request("/branches/" + BRANCH);
       var treeItems = [
@@ -353,6 +375,8 @@
         treeItems.push({ path: target, mode: "100644", type: "blob",
           content: updateIndexHTML(indexes[index], section, posts) });
       });
+      treeItems.push({ path: "index.html", mode: "100644", type: "blob",
+        content: updateHomepageHTML(homepage, posts) });
       if (form.published) treeItems.push({ path: post.file, mode: "100644", type: "blob",
         content: generateArticle(post, form.body, template) });
       if (previous && previous.published && (!form.published || previous.file !== post.file))
@@ -388,6 +412,7 @@
       var posts = current.posts.filter(function (p) { return p.id !== activeId; });
       var targets = Array.from(new Set(Object.keys(CONFIG).map(function (key) { return CONFIG[key].index; })));
       var indexes = await Promise.all(targets.map(fileFromGitHub));
+      var homepage = await fileFromGitHub("index.html");
       var branch = await request("/branches/" + BRANCH);
       var changes = [
         { path: "data/studio-posts.json", mode: "100644", type: "blob", content: JSON.stringify({ version: 1, posts: posts }, null, 2) + "\n" },
@@ -399,6 +424,8 @@
         changes.push({ path: target, mode: "100644", type: "blob",
           content: updateIndexHTML(indexes[targets.indexOf(target)], section, posts) });
       });
+      changes.push({ path: "index.html", mode: "100644", type: "blob",
+        content: updateHomepageHTML(homepage, posts) });
       var tree = await request("/git/trees", { method: "POST", body: { base_tree: branch.commit.commit.tree.sha, tree: changes } });
       var commit = await request("/git/commits", { method: "POST",
         body: { message: "Delete site post: " + old.title, tree: tree.sha, parents: [branch.commit.sha] } });

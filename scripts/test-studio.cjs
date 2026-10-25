@@ -27,6 +27,12 @@ for (const id of ["studio-title", "studio-section", "studio-slug", "studio-date"
   assert.ok(studio.includes('id="' + id + '"'), "Missing form input " + id);
 }
 assert.ok(studio.includes('content="noindex,nofollow"'));
+assert.ok(read("index.html").includes('<!-- STUDIO_RECENT_BLOG_START -->'));
+assert.ok(read("index.html").includes('<!-- STUDIO_RECENT_BLOG_END -->'));
+assert.ok(read("index.html").includes('>recent writings</h2>'));
+assert.ok(read("index.html").includes('href="blog.html">[ blog ]</a>'));
+assert.ok(script.includes('function updateHomepageHTML('));
+assert.ok(script.includes('content: updateHomepageHTML(homepage, posts)'));
 assert.ok(!read("index.html").includes('href="studio.html"'), "Editor linked on public nav");
 assert.ok(tags.includes("tags.js"), "Missing public tag browser");
 assert.ok(!/localStorage|sessionStorage|document\.cookie/.test(script), "Never persist tokens in browser storage");
