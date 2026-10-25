@@ -35,19 +35,23 @@ for (const breakpoint of [609,539,479,419,369,324]) {
   assert.ok(css.includes("@media(max-width:" + breakpoint + "px)"),
     "Missing fit breakpoint " + breakpoint);
 }
-// Mobile horse animation stays in a visible strip above the site,
-// with the desktop three-column layout and reduced-motion preference intact.
-assert.ok(css.includes(".mobile-view-label{margin-bottom:72px!important}"),
-  "Mobile needs clear space for background horses");
-assert.ok(css.includes(".horse-parade > .running-horse{"),
-  "Mobile ASCII horse elements must be visible");
-assert.ok(css.includes("animation:eggseed-mobile-horse-run 11s linear infinite!important"),
-  "Mobile background horses should cross the screen");
-assert.ok(css.includes(".horse-parade > .runner-three{display:none!important}"),
-  "Avoid stacking three animations on mobile");
+// Mobile reuses the original desktop text-frame animation rather than the
+// simplified three preformatted horse drawings.
+assert.ok(css.includes(".mobile-view-label{margin-bottom:143px!important}"),
+  "Mobile should leave an unobstructed strip for the desktop ASCII horse");
+assert.ok(css.includes(".horse-parade::before,.horse-parade::after{\n    display:block!important;"),
+  "Detailed desktop pseudo-element horses must be visible on mobile");
+assert.ok(css.includes("animation:eggseed-horse-pose 0.84s steps(1,end) infinite"),
+  "Keep the eight-frame desktop ASCII leg animation");
+assert.ok(css.includes("eggseed-horse-run 22s linear infinite"),
+  "Keep the desktop cross-screen gallop");
+assert.ok(css.includes(".horse-parade > .running-horse{display:none!important}"),
+  "Hide the simpler placeholder horses on mobile");
+assert.ok(!css.includes("eggseed-mobile-horse-run"),
+  "Do not substitute a simplified mobile-only animation");
 assert.ok(css.includes("prefers-reduced-motion:reduce"),
-  "Must honor reduced-motion preference");
+  "Respect reduced-motion preference");
 assert.ok(css.includes('.site .footer{\n    font:11px/1.55 "Trebuchet MS"'),
-  "Mobile footer should match content text size");
+  "Keep the mobile footer legible");
 
 console.log("Mobile layout OK: 44 pages preserve 3 columns; fit-to-screen + full-size pan available.");

@@ -1109,55 +1109,39 @@ body::before,body::after {
 .recent-writings-list time{display:block;color:#777;font:9px/1.5 "Courier New",Courier,monospace}
 .recent-writings-list a{display:block;margin-top:2px;font:700 10px/1.5 Georgia,"Times New Roman",serif;overflow-wrap:anywhere}
 
-/* Mobile wallpaper: a quiet gallop in its own strip above the page.
-   This avoids hiding the horses behind the opaque three-column panels. */
+/* Mobile wallpaper: reuse the DESKTOP galloping ASCII horse, including
+   all eight animated text frames, moving legs, and the cross-screen run.
+   Only its size/position changes to keep it visible on narrow screens. */
 @media(max-width:680px){
-  /* The label is outside the zoomed site, so this gap stays visible
-     even when the site is fit to a very narrow phone. */
-  .mobile-view-label{margin-bottom:72px!important}
-  /* Large desktop art is hidden on mobile; two original ASCII <pre>
-     horses cross the dedicated space above the header instead. */
-  .horse-parade::before,.horse-parade::after{display:none!important}
-  .horse-parade > .running-horse{
+  /* The space belongs to the moving ASCII artwork, not a separate mobile image. */
+  .mobile-view-label{margin-bottom:143px!important}
+  .horse-parade::before,.horse-parade::after{
     display:block!important;
-    width:max-content!important;
-    white-space:pre!important;
     position:absolute!important;
     left:0!important;
-    top:32px!important;
-    font:7px/1 "Courier New",Courier,monospace!important;
+    width:max-content!important;
+    white-space:pre!important;
     letter-spacing:0!important;
-    color:#242424!important;
-    opacity:.42!important;
-    animation:eggseed-mobile-horse-run 11s linear infinite!important;
-    will-change:transform;
+    color:#161616!important;
+    pointer-events:none!important;
+    /* Desktop uses the same animated content and three keyframe tracks. */
   }
-  .horse-parade > .runner-one{animation-delay:-5s!important}
-  .horse-parade > .runner-two{
-    top:43px!important;
-    font-size:6px!important;
-    opacity:.3!important;
-    animation-duration:15s!important;
-    animation-delay:-10s!important;
+  .horse-parade::before{
+    top:22px!important;
+    font-size:clamp(4px,1.24vw,5.4px)!important;
+    opacity:.46!important;
   }
-  .horse-parade > .runner-three{display:none!important}
-  /* Match the footer's legibility to normal content instead of
-     rendering it as extra-small decorative monospace text. */
+  .horse-parade::after{
+    top:57px!important;
+    font-size:clamp(3.4px,1.02vw,4.4px)!important;
+    opacity:.24!important;
+  }
+  /* Disable the old simplified mobile-only drawing, which isn't the
+     detailed animated horse shown on desktop. */
+  .horse-parade > .running-horse{display:none!important}
   .site .footer{
     font:11px/1.55 "Trebuchet MS",Tahoma,Verdana,sans-serif!important;
     letter-spacing:0;
   }
   .site .footer a{font:inherit}
-}
-@keyframes eggseed-mobile-horse-run{
-  from{transform:translate3d(-180px,0,0)}
-  to{transform:translate3d(calc(100vw + 30px),-2px,0)}
-}
-@media(max-width:680px) and (prefers-reduced-motion:reduce){
-  .horse-parade > .running-horse{
-    animation:none!important;
-    transform:translate3d(7vw,0,0)!important;
-    will-change:auto;
-  }
-  .horse-parade > .runner-two{transform:translate3d(57vw,0,0)!important}
 }
