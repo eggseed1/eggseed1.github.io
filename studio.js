@@ -307,13 +307,32 @@
     }).join("\n");
   }
   /* Keep the home-page recent writings shelf in sync with published blog posts. */
+  /* Publish any writing from Studio (blog, archive, reviews, scans or photos).
+   * The standalone review predates Studio, so include it explicitly.
+   * The 45rpm collection is intentionally excluded. */
   function buildRecentWritings(posts) {
-    var names = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
-    var latest = posts.filter(function (p) { return p.published && p.section === "blog"; })
-      .sort(compareByDate).slice(0, 2);
+    var months = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
+    var olderArticles = [
+      { title: "Hard to Love a Man", date: "2026-10-24", section: "reviews",
+        file: "reviews/hard-to-love-a-man.html" }
+    ];
+    var seen = {};
+    var candidates = [];
+    posts.concat(olderArticles).forEach(function (p, index) {
+      if (!p.published && !olderArticles.includes(p)) return;
+      if (p.section === "45rpm" || !p.file || seen[p.file]) return;
+      seen[p.file] = true;
+      candidates.push({ title: p.title, date: p.date, file: p.file,
+        managed: index < posts.length });
+    });
+    var latest = candidates.sort(function (a, b) {
+      return clean(b.date).localeCompare(clean(a.date)) ||
+        Number(b.managed) - Number(a.managed) ||
+        a.title.localeCompare(b.title);
+    }).slice(0, 3);
     if (!latest.length) return '<p class="recent-writings-empty">no writings yet.</p>';
     return '<ul class="recent-writings-list">' + latest.map(function (p) {
-      var date = clean(p.date), month = names[Number(date.slice(5, 7)) - 1] || "";
+      var date = clean(p.date), month = months[Number(date.slice(5, 7)) - 1] || "";
       var label = month + " " + Number(date.slice(8, 10)) + ", " + date.slice(0, 4);
       return '<li><time datetime="' + escapeHTML(date) + '">' + escapeHTML(label) + '</time>' +
         '<a href="' + escapeHTML(p.file) + '">' + escapeHTML(p.title) + '</a></li>';

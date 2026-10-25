@@ -1100,7 +1100,7 @@ body::before,body::after {
 .tags-page #tag-filter a{font:10px/1.3 "Courier New",monospace;display:inline-block;text-decoration:none;border:1px dotted #999;padding:3px 5px}
 .tags-page #tag-filter a.is-current{background:#eee;border-color:#333}
 
-/* Homepage recent writing shelf: blog entry point, not a second archive. */
+/* Homepage: latest three writings from across the site (excluding 45rpm records). */
 .recent-writing-box{display:flex;flex-direction:column;min-width:0}
 .recent-writing-box h2{flex:0 0 auto}
 .recent-writings-list{list-style:none;margin:3px 0 8px;padding:0;min-width:0}
@@ -1108,4 +1108,3 @@ body::before,body::after {
 .recent-writings-list li:last-child{border-bottom:0;margin-bottom:0}
 .recent-writings-list time{display:block;color:#777;font:9px/1.5 "Courier New",Courier,monospace}
 .recent-writings-list a{display:block;margin-top:2px;font:700 10px/1.5 Georgia,"Times New Roman",serif;overflow-wrap:anywhere}
-.recent-writing-more{margin:auto 0 0;padding-top:6px;font:10px/1.5 "Courier New",Courier,monospace}
