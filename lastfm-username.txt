@@ -1,0 +1,3 @@
+# Public Last.fm account for eggseed listening widget.
+# Refreshed by GitHub Actions during site publishing.
+eggseed0

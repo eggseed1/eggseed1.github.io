@@ -1,0 +1,1101 @@
+
+/* eggseed: small personal homestead. no scripts, no images, no frameworks. */
+:root{color-scheme:light;--ink:#1e1e1e;--dim:#666;--line:#9b9b9b;--paper:#fff;--soft:#f8f8f8}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;color:var(--ink);font:11px/1.55 Verdana,Geneva,Tahoma,sans-serif;background-color:#fafafa;background-image:repeating-linear-gradient(0deg,transparent 0 3px,#eeeeee 3px 4px),repeating-linear-gradient(90deg,transparent 0 3px,#eeeeee 3px 4px);background-blend-mode:screen}
+a{color:#333;text-decoration:underline;text-decoration-style:dotted;text-underline-offset:2px}
+a:hover{background:#222;color:white;text-decoration:none}
+a:focus-visible{outline:2px solid black;outline-offset:2px}
+p{margin:0 0 8px}
+h1,h2,h3{font:inherit;margin:0}
+pre{font:10px/1 "Courier New",monospace;white-space:pre;tab-size:4}
+.tiny-clock{position:absolute;top:8px;left:8px;color:#777;font:10px 'Courier New',monospace}
+.background-star{position:absolute;z-index:-1;color:#a9a9a9;font:7px/1 'Courier New',monospace;opacity:.38;pointer-events:none;white-space:pre}
+.background-star.left{top:355px;left:calc(50% - 480px)}
+.background-star.right{top:60px;left:calc(50% + 328px)}
+.site{width:605px;margin:54px auto 32px}
+.site-header{height:73px;border:1px dotted var(--line);background:rgba(255,255,255,.83);position:relative;text-align:center;margin-bottom:16px;box-shadow:inset 0 0 0 5px #fafafa,inset 0 0 0 6px #dfdfdf}
+.header-flourish{font:9px/1 'Courier New',monospace;letter-spacing:1px;padding-top:7px;color:#888}
+.site-name{display:block;width:max-content;margin:1px auto 0;font-size:12px;font-weight:bold;letter-spacing:.2px;text-decoration:none}
+.site-name:hover{background:transparent;color:#111;text-decoration:underline}
+.site-tag{font:9px/1.1 'Courier New',monospace;letter-spacing:.08px;color:#666}
+.theme-tag{position:absolute;bottom:4px;right:9px;color:#666;font:9px 'Courier New',monospace}
+.columns{display:grid;grid-template-columns:139px 301px 143px;gap:11px;align-items:start}
+.panel{border:1px dotted var(--line);background:rgba(255,255,255,.9);padding:7px;margin:0 0 11px;position:relative}
+.panel::before{content:"";position:absolute;height:3px;top:0;left:3px;right:3px;border-top:1px dotted #ddd}
+.panel-label{font:10px/1.2 Verdana,sans-serif;color:#555;letter-spacing:.1px;margin:0 0 3px}
+.panel-label::before{content:":: ";color:#999}
+.inner{border:1px dotted #aaa;padding:5px}
+.navbox{padding:8px}
+.navbox .inner{padding:3px 5px}
+.navrow{display:block;min-height:21px;padding:2px 0;border-bottom:1px dotted #a4a4a4;font-size:10px;text-decoration:none}
+.navrow:last-child{border-bottom:0}
+.navrow .symbol{font:10px monospace;color:#777;margin-right:7px}
+.navrow.active{font-weight:bold}
+.navrow:hover .symbol{color:#fff}
+.side-center{text-align:center}
+.side-ascii{font:9px/1.12 'Courier New',monospace;margin:3px auto 7px}
+.button-small{display:inline-block;border:1px dotted #aaa;padding:2px 5px;font:9px 'Courier New',monospace;text-decoration:none;background:#f7f7f7}
+.side-caption{font-size:9px;color:#666}
+.row-links a{display:block}
+.centerframe{border:1px dotted var(--line);background:rgba(255,255,255,.92);padding:7px;min-height:278px}
+.center-title{display:flex;justify-content:space-between;font:10px/1.4 'Courier New',monospace;color:#777;border-bottom:1px dotted #bbb;margin-bottom:9px;padding-bottom:4px}
+.welcome-split{display:grid;grid-template-columns:119px 1fr;gap:8px;align-items:start}
+.horse-window{padding:4px 0 0;text-align:center;overflow:hidden}
+.horse-window pre{font:8px/.99 'Courier New',monospace;margin:0;color:#505050}
+.horse-window small{font:9px 'Courier New',monospace;color:#777;display:block;margin-top:5px}
+.greeting{border:1px dotted #aaa;padding:7px;min-height:112px;font-size:10px;line-height:1.55}
+.greeting strong{font-weight:normal;text-decoration:underline;text-decoration-style:dotted}
+.double-mini{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:9px}
+.minibox{border:1px dotted #999;padding:5px;min-height:107px;font-size:10px}
+.minibox h2{font-weight:bold;font-size:10px;border-bottom:1px dotted #bbb;margin-bottom:5px}
+.minibox pre{font:8px/1.08 'Courier New',monospace;text-align:center}
+.small-list{padding-left:11px;margin:0}
+.small-list li{margin:0 0 4px}
+.mini-disc{font:9px/1 'Courier New',monospace!important;text-align:center;margin:4px auto 6px}
+.stamp-strip{font:9px 'Courier New',monospace;text-align:center;border-top:1px dotted #bbb;margin-top:10px;padding:6px 0 1px}
+.blog-box{border:1px dotted #999;margin-top:10px;padding:7px}
+.blog-box > h2{font-size:10px;color:#555;margin-bottom:3px}
+.post{border-top:1px dotted #b4b4b4;padding:7px 0 5px}
+.post:first-of-type{margin-top:3px}
+.post .meta{font:9px 'Courier New',monospace;color:#777}
+.post h3{font-weight:bold;font-size:10px;margin:2px 0 3px}
+.post p{font-size:10px;margin-bottom:3px}
+.post a.more{font:9px 'Courier New',monospace}
+.rightbox p{font-size:10px;margin-bottom:5px}
+.rightbox .date{font:9px 'Courier New',monospace;color:#555}
+.archive{padding:0;margin:0;list-style:none}
+.archive li{border-bottom:1px dotted #bbb;padding:3px 0;font-size:10px}
+.archive li:last-child{border:0}
+.archive small{display:block;color:#777;font:9px 'Courier New',monospace}
+.wave-pre{font:9px/1.1 'Courier New',monospace;white-space:pre;margin:3px 0}
+.footer{margin-top:11px;border:1px dotted #999;text-align:center;padding:7px 5px;background:#fff;font:9px/1.7 'Courier New',monospace;color:#666}
+.footer a{color:#555}
+.section-head{font-size:11px;font-weight:bold;border-bottom:1px dotted #888;padding-bottom:4px;margin-bottom:8px}
+.section-head::before{content:"[ ";font-weight:normal}
+.section-head::after{content:" ]";font-weight:normal}
+.lead{font-size:10px;line-height:1.65}
+.subhead{font-weight:bold;font-size:10px;border-bottom:1px dotted #bbb;margin:12px 0 6px}
+.file-row{border-bottom:1px dotted #bbb;padding:8px 0;font-size:10px}
+.file-row:last-child{border:0}
+.file-tag{font:9px 'Courier New',monospace;color:#777}
+.file-title{font-weight:bold}
+.file-description{margin:3px 0}
+.block-art{font:9px/1.05 'Courier New',monospace;text-align:center;white-space:pre;margin:8px auto;color:#333;overflow:hidden}
+.ascii-demo{font:10px/1 'Courier New',monospace;white-space:pre;overflow:auto;border:1px dotted #aaa;padding:5px;background:#fff;margin:7px 0}
+.gallery-tile{border:1px dotted #aaa;padding:7px;margin:8px 0;text-align:center}
+.gallery-tile p{text-align:left;margin:6px 0 0;font-size:10px}
+.record-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin:8px 0}
+.record{border:1px dotted #aaa;padding:6px;text-align:center;font:9px 'Courier New',monospace}
+.record pre{font:9px/1 'Courier New',monospace;margin:5px auto}
+.editor{width:100%;min-height:220px;display:block;background:#fff;color:#000;border:1px dotted #888;padding:9px;font:9px/1.15 'Courier New',monospace;white-space:pre;resize:vertical;overflow:auto}
+.note{font:9px/1.5 'Courier New',monospace;color:#666}
+.tableish{width:100%;border-collapse:collapse;font-size:10px}
+.tableish th,.tableish td{border-bottom:1px dotted #bbb;text-align:left;padding:5px 3px;vertical-align:top}
+.tableish th{font-weight:bold}
+.link-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px}
+.link-grid a{padding:4px;border:1px dotted #aaa;text-align:center;text-decoration:none;font:9px monospace}
+.contents{padding-left:16px;margin:6px 0}
+.contents li{margin:4px 0}
+@media(max-width:650px){
+ .site{width:min(94vw,605px);margin:25px auto}
+ .columns{grid-template-columns:1fr;gap:9px}
+ .site-header{margin-bottom:9px}
+ .navbox .inner{display:grid;grid-template-columns:1fr 1fr;column-gap:11px}
+ .navrow{min-height:26px}
+ .left-col{order:1}
+ .center-col{order:2}
+ .right-col{order:3}
+ .centerframe{min-height:0}
+ .background-star{display:none}
+}
+@media(max-width:360px){.welcome-split{grid-template-columns:1fr}.horse-window{margin-bottom:5px}.double-mini{grid-template-columns:1fr}}
+
+/* The workshop is a little wider, like opening a workbench on a tiny homepage. */
+.maker-page .site{width:min(94vw,850px)}
+.maker-page .columns{grid-template-columns:139px minmax(0,1fr) 143px}
+.maker-page .centerframe{min-width:0}
+.maker-banner{font:10px/1.1 "Courier New",monospace;text-align:center;margin:10px auto}
+.maker-drop{border:1px dashed #888;background:#fdfdfd;text-align:center;padding:11px 8px;margin:9px 0}
+.maker-drop.hover{background:#e7e7e7;outline:2px dashed #333;outline-offset:-5px}
+.maker-drop label{display:block;font:11px "Courier New",monospace;text-decoration:underline;cursor:pointer}
+.maker-drop input{display:block;margin:8px auto 4px;font:10px Verdana,sans-serif;max-width:95%}
+.maker-settings{margin:10px 0;border:1px dotted #888;padding:9px}
+.maker-settings legend{font:10px "Courier New",monospace;padding:0 4px}
+.maker-settings-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.maker-settings-grid label{display:block;font:10px "Courier New",monospace}
+.maker-settings-grid output{float:right}
+.maker-settings-grid input[type=range]{display:block;width:100%;margin:7px 0 2px;accent-color:#333}
+.maker-settings-grid select{display:block;width:100%;margin:6px 0 0;padding:4px;border:1px dotted #777;background:#fff;color:#111;border-radius:0;font:10px "Courier New",monospace}
+.maker-invert{display:block;margin-top:10px;font:10px "Courier New",monospace}
+.maker-invert input{accent-color:#222;vertical-align:middle}
+.maker-actions{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0}
+.maker-actions button{cursor:pointer;padding:5px 7px;border:1px dotted #666;background:#fff;color:#111;font:10px "Courier New",monospace;border-radius:0}
+.maker-actions button:hover:not(:disabled){background:#222;color:#fff}
+.maker-actions button:focus-visible{outline:2px solid #222;outline-offset:2px}
+.maker-actions button:disabled{opacity:.45;cursor:not-allowed}
+.maker-output{width:100%;height:360px;display:block;padding:8px;border:1px dotted #777;background:#fff;color:#141414;font:8px/1 "Courier New",monospace;resize:vertical;white-space:pre;overflow:auto;tab-size:4}
+.maker-result-header{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.maker-result-header .subhead{flex:1}
+.maker-entry{border:1px dotted #888;padding:7px;display:grid;grid-template-columns:69px 1fr;gap:7px;align-items:center;margin:9px 0;background:#fafafa}
+.maker-entry pre{margin:0;text-align:center;font:9px/1.07 "Courier New",monospace}
+.maker-entry h2{font-size:10px;font-weight:bold}
+.maker-entry p{font-size:9px;margin:1px 0}
+.maker-entry a{font-size:10px}
+@media(max-width:860px){
+ .maker-page .site{width:min(94vw,605px)}
+ .maker-page .columns{grid-template-columns:1fr}
+ .maker-page .centerframe{min-width:0}
+}
+@media(max-width:380px){.maker-settings-grid{grid-template-columns:1fr}}
+
+
+/* EGGSEED: compact Western personal web, 2026. The three-line lace trim
+   is printed in ASCII characters. No pictures, SVGs or remote fonts. */
+:root{--ink:#111;--dim:#444;--line:#777;--paper:#fff;--soft:#fafafa}
+html{color-scheme:light}
+body{
+  background-color:#fff;
+  background-image:radial-gradient(#e5e5e5 .55px,transparent .65px);
+  background-size:9px 9px;
+  color:#111;
+  font:11px/1.56 "Trebuchet MS",Tahoma,Verdana,sans-serif
+}
+.site{position:relative;z-index:2;width:632px;max-width:95vw;margin:28px auto 25px}
+.site-header{
+  height:86px;padding:4px 0 12px;display:flex;align-items:center;justify-content:center;
+  gap:15px;position:relative;margin-bottom:12px;
+  border:0;outline:0;box-shadow:none;background:transparent
+}
+.site-header .header-flourish,.site-header .site-tag,.site-header .theme-tag,.tiny-clock{display:none}
+.site-name.ascii-title{display:block;flex:0 0 auto;width:max-content;max-width:100%;margin:0;border:0;box-shadow:none;text-decoration:none}
+.site-name.ascii-title pre{margin:0;font:700 9px/1.05 "Courier New",monospace;color:#000;text-align:left;white-space:pre;letter-spacing:0}
+.site-name.ascii-title:hover{background:transparent;color:#000}
+.header-horse{display:block;flex:0 0 auto;margin:0;color:#111;font:9px/1.02 "Courier New",monospace;white-space:pre}
+.header-horse-right{transform:scaleX(-1)}
+.header-undertype{position:absolute;bottom:0;left:0;right:0;font:9px/1 monospace;text-align:center;letter-spacing:2px;color:#666}
+.columns{display:grid;grid-template-columns:145px minmax(0,1fr) 145px;gap:11px;align-items:stretch}
+.left-col,.center-col,.right-col{display:flex;flex-direction:column;min-width:0;min-height:0;align-self:stretch}
+.left-col>.panel:last-child,.right-col>.panel:last-child{flex-grow:1;margin-bottom:0}
+.centerframe{flex:1;min-height:0}
+.panel,.centerframe,.greeting,.minibox,.blog-box,.maker-entry,.gallery-tile,.maker-drop,.maker-settings{
+  position:relative;border:1px dashed #686868;background:#fff;box-shadow:none;
+  padding-top:19px!important;padding-bottom:19px!important;
+}
+.panel{padding-left:8px;padding-right:8px;margin:0 0 9px;overflow:hidden}
+.panel::before{border:0}
+.panel::before,.panel::after,
+.centerframe::before,.centerframe::after,
+.greeting::before,.greeting::after,
+.minibox::before,.minibox::after,
+.blog-box::before,.blog-box::after,
+.maker-entry::before,.maker-entry::after,
+.gallery-tile::before,.gallery-tile::after,
+.maker-drop::before,.maker-drop::after,
+.maker-settings::before,.maker-settings::after{
+  content:".:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:..:oOo:.\A (o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)(o@o@o)\A  \\___/   \\___/  \\___/   \\___/  \\___/   \\___/  \\___/   \\___/  \\___/   \\___/  \\___/   \\___/  \\___/   \\___/  \\___/   \\___/  \\___/   \\___/  \\___/   \\___/  \\___/   \\___/  \\___/   \\___/  \\___/   \\___/  \\___/   \\___/  \\___/   \\___/  \\___/   \\___/  \\___/   \\___/  \\___/   \\___/  \\___/   \\___/  \\___/   \\___/  \\___/   \\___/  \\___/   \\___/  \\___/   \\___/  \\___/   \\___/  \\___/   \\___/  \\___/   \\___/  \\___/   \\___/  \\___/   \\___/  \\___/   \\___/  \\___/   \\___/  \\___/   \\___/  \\___/   \\___/  \\___/   \\___/  \\___/   \\___/  \\___/   \\___/  \\___/   \\___/  \\___/   \\___/  \\___/   \\___/  \\___/   \\___/  \\___/   \\___/ ";
+  position:absolute;display:block;left:1px;right:1px;top:1px;bottom:auto;
+  width:calc(100% - 2px);height:14px;padding:0;margin:0;border:0;
+  background:transparent;color:#222;
+  font:5px/.92 "Courier New",monospace;white-space:pre;text-align:left;
+  letter-spacing:-.1px;overflow:hidden;pointer-events:none;
+  opacity:1;z-index:0;transform:none
+}
+.panel::after,.centerframe::after,.greeting::after,.minibox::after,.blog-box::after,
+.maker-entry::after,.gallery-tile::after,.maker-drop::after,.maker-settings::after{
+  top:auto;bottom:1px;transform:scaleY(-1)
+}
+.panel>*,.centerframe>*,.greeting>*,.minibox>*,.blog-box>*,.maker-entry>*,
+.gallery-tile>*,.maker-drop>*,.maker-settings>*{position:relative;z-index:1}
+.panel-label{font:700 11px/1.2 Georgia,"Times New Roman",serif;text-align:center;color:#111;margin:1px 0 6px}
+.panel-label::before{content:"[ ";font:10px monospace;color:#555}
+.panel-label::after{content:" ]";font:10px monospace;color:#555}
+.panel .inner{border:0;border-top:1px dotted #888;padding:5px 0 0;text-align:center}
+.navbox .inner{border-top:0;display:block;text-align:left;padding:2px 0 0}
+.navbox .inner>.panel-label{text-align:center}
+.navrow{font:10px/1.4 "Trebuchet MS",Tahoma,Verdana,sans-serif;min-height:21px;text-align:left}
+.navrow .symbol{color:#444}
+.navrow.active{background:#f1f1f1;font-weight:bold}
+.side-center{text-align:center}
+.cowboy-panel .side-ascii{font:8px/1.06 "Courier New",monospace;white-space:pre;margin:7px auto;overflow:hidden;max-width:100%}
+.rightbox .inner{text-align:center}
+.needle-art{font:9px/1.1 "Courier New",monospace;text-align:center;margin:5px auto;white-space:pre}
+.wave-pre{font:10px/1.1 "Courier New",monospace;text-align:center}
+.footer{margin-top:10px;border:1px dashed #777;background:#fff;font:10px/1.5 monospace;text-align:center;padding:7px 4px}
+.section-head{font:italic 700 15px/1.2 Georgia,"Times New Roman",serif;text-align:center;border-bottom:1px dashed #888;margin:0 0 9px;padding-bottom:5px}
+.subhead,.minibox h2,.blog-box>h2{font:700 12px/1.35 Georgia,"Times New Roman",serif}
+.file-title{font:700 13px/1.35 Georgia,"Times New Roman",serif}
+.home-page .homestead-intro{text-align:center}
+.home-page .home-horse{font:7px/1.04 "Courier New",monospace;white-space:pre;text-align:center;margin:1px auto 10px;max-width:100%;overflow:hidden}
+.home-page .greeting{padding-left:9px;padding-right:9px;min-height:0;text-align:center;font-size:10.5px;line-height:1.57}
+.home-page .maker-entry{display:grid;grid-template-columns:67px minmax(0,1fr);gap:7px;align-items:center;margin:9px 0;text-align:center;padding-left:7px;padding-right:7px}
+.home-page .maker-entry pre{font:9px/1.03 "Courier New",monospace;text-align:center;margin:0}
+.home-page .maker-entry h2{font:700 12px Georgia,serif}
+.home-page .double-mini{display:grid;grid-template-columns:1fr 1fr;gap:8px;align-items:stretch}
+.home-page .minibox{text-align:center;min-width:0;padding-left:5px;padding-right:5px}
+.home-page .minibox h2{text-align:center}
+.home-page .mini-disc{font:8px/1 "Courier New",monospace!important;text-align:center;margin:6px auto}
+.record-link{display:inline-block;margin:4px auto 0}
+.blog-box{margin-top:9px;padding-left:8px;padding-right:8px}
+.post{padding:8px 0}
+.post h3{font:700 12px Georgia,serif}
+.post p{line-height:1.6}
+.file-row{text-align:left}
+.maker-page .site{width:min(95vw,820px)}
+.maker-page .columns{grid-template-columns:145px minmax(0,1fr) 145px}
+.maker-letter-input{width:100%;padding:7px;border:1px dashed #666;background:#fff;color:#111;font:12px "Courier New",monospace}
+.maker-output{font-size:8px;white-space:pre}
+.maker-settings-grid input[type=range],.maker-invert input{accent-color:#111}
+.horse-parade{position:fixed;inset:0;z-index:1;overflow:hidden;pointer-events:none;color:#111}
+.running-horse{
+  position:absolute;top:24%;left:calc(50% - 540px);width:max-content;white-space:pre;
+  font:10px/1.02 "Courier New",monospace;opacity:.46;margin:0;
+  animation:eggseed-gallop 6.2s ease-in-out infinite alternate
+}
+.runner-two{top:49%;left:calc(50% + 336px);font-size:9px;opacity:.43;animation-duration:7.4s;animation-direction:alternate-reverse}
+.runner-three{top:82%;left:calc(50% - 503px);font-size:8px;opacity:.34;animation-duration:5.5s}
+@keyframes eggseed-gallop{
+  0%{transform:translate3d(-10px,0,0)}
+  45%{transform:translate3d(15px,-6px,0)}
+  100%{transform:translate3d(33px,2px,0)}
+}
+@media(max-width:680px){
+  .site,.maker-page .site{width:min(94vw,632px);margin:16px auto}
+  .columns,.maker-page .columns{grid-template-columns:1fr;gap:8px}
+  .left-col,.center-col,.right-col{display:block}
+  .left-col>.panel:last-child,.right-col>.panel:last-child{flex-grow:0;margin-bottom:9px}
+  .centerframe{min-height:0}
+  .site-header{gap:5px;height:78px}
+  .site-name.ascii-title pre{font-size:7px}
+  .header-horse{font-size:6px}
+  .navbox .inner{display:grid;grid-template-columns:1fr 1fr;gap:0 8px}
+  .navbox .panel-label{grid-column:1/-1}
+  .running-horse{left:-45px;top:27%;font-size:8px;opacity:.18}
+  .runner-two{left:calc(100% - 128px);top:61%;opacity:.18}
+  .runner-three{left:-15px;top:86%;opacity:.12}
+}
+@media(max-width:420px){
+  .header-horse{display:none}
+  .site-name.ascii-title pre{font-size:8px}
+}
+@media(max-width:360px){.home-page .double-mini{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.running-horse{animation:none!important}}
+
+
+/* The homepage ASCII Maker lives in the left sidebar, not the main column. */
+.home-page .ascii-side-panel{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:5px;
+  text-align:center;
+  min-width:0;
+}
+.home-page .ascii-side-panel .panel-label{margin:0 0 3px}
+.home-page .ascii-side-panel .machine-stamp{
+  font:9px/1.08 "Courier New",monospace;
+  white-space:pre;
+  text-align:center;
+  margin:3px 0;
+  max-width:100%;
+}
+.home-page .ascii-side-panel p{
+  font-size:10px;
+  line-height:1.48;
+  margin:2px 0 5px;
+}
+.home-page .ascii-side-panel .button-small{
+  font:9px/1.5 "Courier New",monospace;
+  padding:3px 5px;
+  max-width:100%;
+  white-space:normal;
+}
+
+
+/* Currently... reading & Last.fm listening. */
+.currently-panel .inner{
+  text-align:center;
+  padding:8px 1px 2px;
+}
+.currently-panel .currently-line{
+  font-size:10px;
+  line-height:1.55;
+  overflow-wrap:anywhere;
+  margin:0 0 9px;
+}
+.currently-key{
+  display:block;
+  font:700 10px/1.4 "Courier New",monospace;
+  color:#222;
+  margin-bottom:1px;
+}
+.currently-panel cite{font-family:Georgia,"Times New Roman",serif;font-size:11px}
+.currently-credit{font-size:10px}
+.currently-track{font-size:10px;line-height:1.5;text-decoration:underline dotted;text-underline-offset:2px}
+.currently-muted{color:#777;font-size:9px}
+.currently-status{display:block;color:#777;font:9px/1.4 "Courier New",monospace;margin-top:3px}
+
+
+
+/* Eggseed wallpaper: fine pale dots + original multi-frame ASCII horse.
+   Inspired by frame-by-frame Muybridge motion. No image or JS animation. */
+body {
+  background-color:#fff !important;
+  background-image:radial-gradient(circle,rgba(0,0,0,.105) .85px,transparent 1.12px) !important;
+  background-repeat:repeat !important;
+  background-size:32px 32px !important;
+  background-position:4px 4px !important;
+  background-blend-mode:normal !important;
+}
+body::before,body::after {
+  content:none !important;
+  animation:none !important;
+  display:none !important;
+}
+.horse-parade{
+  display:block !important;
+  position:fixed !important;
+  inset:0 !important;
+  overflow:hidden !important;
+  z-index:0 !important;
+  background:transparent !important;
+  pointer-events:none !important;
+  visibility:visible !important;
+}
+.horse-parade > .running-horse{display:none !important}
+/* Galloping horse v2: original detailed equine ASCII silhouette.
+   8 anatomically distinct leg poses (4 legs), upright ears, mane,
+   muzzle and tail. Text characters only; no image or JS assets. */
+.horse-parade::before,.horse-parade::after{
+  content:"\A                                                            :   :\A                                                          ::##  @+\A                                                          %@@@*%@-\A                                                        :%@@@@@@@=\A                                                      :#@@@@@@@@@*-\A                                                   :=*@@@@@@@@@@@@@\A                                                   *@@@@@@@@%#@@@@@*\A     .::-:...                                   .@@@@@@@@@@@#: :%@@@%-.\A      =%@@@#+=-..       .:=+*#%%%%%%%%%%#######*%@@@@@@@@@%@@*   #@@@@@%+\A        :%@@@@@@#*- :*@@@@@%%%%%%%%@@@@@@@@@%@@@@@@@@@@@%*@@-     *@@@@%##\A      .=%@@@@@@@@@@@@@@@@%@@@@@@@@@@@@@@@@@@@%%%@@@@@@@%=@@*       :=*#*=.\A         :+%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%@@@@@+%@%\A                  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%@%.\A                  *@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@##@@@@%\A                   =@@%#@@@@@@@@@@@@@@@@@@@@@@@@@@%+*@@@+\A                     :++*@@@@@@@@@@@@@@@@@@@@@@@@@@#++*@@-\A                     .+=   :-@@@+++++++*###%###*+-.  =+#@@+=----:::-==+**=\A                    .++.     =@@:                     :-#@@@@@@@@@@@@%##*=\A                 .-++=.    -#@@#:                        :-++-. ..\A               :=+=:    :+@@%+.                             .-++-\A             -++-   .-+@@@*:                                   :-.\A          .-++: -*%@@@@#=\A          .::  .+*+-:\A \A \A ";
+  display:block;
+  position:absolute;
+  left:0;
+  width:max-content;
+  height:max-content;
+  margin:0;
+  padding:0;
+  border:0;
+  white-space:pre;
+  letter-spacing:0;
+  text-align:left;
+  color:#131313;
+  font:clamp(9px,1.02vw,14px)/1.01 "Courier New",monospace;
+  opacity:.43;
+  pointer-events:none;
+  will-change:transform,translate,rotate;
+  transform-origin:53% 63%;
+  transform:translateX(-100%);
+}
+.horse-parade::before{
+  top:23%;
+  animation:eggseed-horse-pose 0.84s steps(1,end) infinite,
+            eggseed-horse-run 22s linear infinite -8.5s,
+            eggseed-horse-body 0.84s ease-in-out infinite;
+}
+.horse-parade::after{
+  top:68%;
+  font-size:clamp(8px,.74vw,11px);
+  opacity:.27;
+  animation:eggseed-horse-pose 0.84s steps(1,end) infinite -.42s,
+            eggseed-horse-run 28s linear infinite -20s,
+            eggseed-horse-body 0.84s ease-in-out infinite -.42s;
+}
+@keyframes eggseed-horse-pose{
+0.00%,12.49%{content:"\A                                                            :   :\A                                                          ::##  @+\A                                                          %@@@*%@-\A                                                        :%@@@@@@@=\A                                                      :#@@@@@@@@@*-\A                                                   :=*@@@@@@@@@@@@@\A                                                   *@@@@@@@@%#@@@@@*\A     .::-:...                                   .@@@@@@@@@@@#: :%@@@%-.\A      =%@@@#+=-..       .:=+*#%%%%%%%%%%#######*%@@@@@@@@@%@@*   #@@@@@%+\A        :%@@@@@@#*- :*@@@@@%%%%%%%%@@@@@@@@@%@@@@@@@@@@@%*@@-     *@@@@%##\A      .=%@@@@@@@@@@@@@@@@%@@@@@@@@@@@@@@@@@@@%%%@@@@@@@%=@@*       :=*#*=.\A         :+%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%@@@@@+%@%\A                  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%@%.\A                  *@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@##@@@@%\A                   =@@%#@@@@@@@@@@@@@@@@@@@@@@@@@@%+*@@@+\A                     :++*@@@@@@@@@@@@@@@@@@@@@@@@@@#++*@@-\A                     .+=   :-@@@+++++++*###%###*+-.  =+#@@+=----:::-==+**=\A                    .++.     =@@:                     :-#@@@@@@@@@@@@%##*=\A                 .-++=.    -#@@#:                        :-++-. ..\A               :=+=:    :+@@%+.                             .-++-\A             -++-   .-+@@@*:                                   :-.\A          .-++: -*%@@@@#=\A          .::  .+*+-:\A \A \A "}
+12.50%,24.99%{content:"\A                                                             :   :\A                                                           ::##  @+\A                                                           %@@@*%@-\A                                                         :%@@@@@@@=\A                                                       :#@@@@@@@@@*-\A                                                    :=*@@@@@@@@@@@@@\A                                                   *@@@ @@@@@%#@@@@@*\A     .::-:...                                   .@@@@@@ @@@@@#: :%@@@%-.\A      =%@@@#+=-..       .:=+*#%%%%%%%%%%#######*%@@@@@@ @@@%@@*   #@@@@@%+\A        :%@@@@@@#*- :*@@@@@%%%%%%%%@@@@@@@@@%@@@@@@@@@@@%*@@-     *@@@@%##\A      .=%@@@@@@@@@@@@@@@@%@@@@@@@@@@@@@@@@@@@%%%@@@@@@@%=@@*       :=*#*=.\A         :+%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%@@@@@+%@%\A                  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%@%.\A                  *@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@##@@@@%\A                   =@@%#%@@@@@@@@@@@@@@@@@@@@@@@@@*+%@%@@=\A                    :++=*@@@@@@@@@@@@@@@@@@@@@@@@@@*+- -@@#.\A                 .=+=:     :@@%++++++++*###%###*+-..++-..#@@*-:\A               .=+-.       :@@=                      .=+=.-+%@@@%+-\A             .-++.       .*@@%.                        .=+=:  :=*@@#.\A          :-++=:       :#@@*:                            .-++-.  .*@@+\A         :--.          @@%.                                 .=++.  :@@@\A                      +@@:                                     .     :\A                     -@@*\A                      .:\A \A "}
+25.00%,37.49%{content:"\A                                                              :   :\A                                                            ::##  @+\A                                                            %@@@*%@-\A                                                          :%@@@@@@@=\A                                                        :#@@@@@@@@@*-\A                                                     :=*@@@@@@@@@@@@@\A     =***=.                                        *@@@ @@@@@%#@@@@@*\A      =@@@@%+:                                  .@@@@@@ @@@@@#: :%@@@%-.\A       .@@@@@@@+:       .:=+*#%%%%%%%%%%#######*%@@@@@@ @@@%@@*   #@@@@@%+\A      +@@@@@@@@@@%= :*@@@@@%%%%%%%%@@@@@@@@@%@@@@@@@@@@@%*@@-     *@@@@%##\A     .-*%@@@@@@@@@@@@@@@@%@@@@@@@@@@@@@@@@@@@%%%@@@@@@@%=@@*       :=*#*=.\A         .=#%%%%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%@@@@@+%@%\A                  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%@%.\A                  *@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#*@@@@@\A                   =@@@##@@@@@@@@@@@@@@@@@@@@@@@@@%+*@#@@#.\A                     ++++@@@@@@@@@@@@@@@@@@@@@@@@@@#++. #@@+\A                  .=+=:    *@@*++++++++*###%###*+-.  =+- =@@#-.\A                  ++.      @@%                       :++   +%@@%+.\A                 :+=      #@@:                       -+-     .=#@@@+:\A                 =+:    .#@%.                        =+:         -*@@%+.\A                 ++     +@@                         :++.            =*#:\A                 =+.    *@@                        -++.\A                 -+-   .%@%                      .=+-\A                 ::.     :\A \A "}
+37.50%,49.99%{content:"\A                                                             :   :\A                                                           ::##  @+\A                                                           %@@@*%@-\A                                                         :%@@@@@@@=\A                                                       :#@@@@@@@@@*-\A                                                    :=*@@@@@@@@@@@@@\A     =***=.                                        *@@@ @@@@@%#@@@@@*\A      =@@@@%+:                                  .@@@@@@ @@@@@#: :%@@@%-.\A       .@@@@@@@+:       .:=+*#%%%%%%%%%%#######*%@@@@@@ @@@%@@*   #@@@@@%+\A      +@@@@@@@@@@%= :*@@@@@%%%%%%%%@@@@@@@@@%@@@@@@@@@@@%*@@-     *@@@@%##\A     .-*%@@@@@@@@@@@@@@@@%@@@@@@@@@@@@@@@@@@@%%%@@@@@@@%=@@*       :=*#*=.\A         .=#%%%%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%@@@@@+%@%\A                  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%@%.\A                  *@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*#@@@@%\A                   =@@@#*@@@@@@@@@@@@@@@@@@@@@@@@@#+#@@@%.\A                     :*++%@@@@@@@@@@@@@@@@@@@@@@@@@*+- *@@+\A                     -+-   :-=@@%++++++*###%###*+-..++. :%@@-\A                    -+=       %@%                   -+-   *@@.\A                  .++-       =@@:                   =+:    #@%\A                 :+=.       .@@+                    ++      %@%\A                 =+.        %@%                    .++      #@%\A                 ++        #@@:                    -+-      @@+\A                -=-      .*@@:                    .++      +@@:\A                          -+:                      ..\A \A "}
+50.00%,62.49%{content:"\A                                                            :   :\A                                                          ::##  @+\A                                                          %@@@*%@-\A                                                        :%@@@@@@@=\A                                                      :#@@@@@@@@@*-\A                                                   :=*@@@@@@@@@@@@@\A                                                   *@@@@@@@@%#@@@@@*\A         ....                                   .@@@@@@@@@@@#: :%@@@%-.\A              ...       .:=+*#%%%%%%%%%%#######*%@@@@@@@@@%@@*   #@@@@@%+\A      --=++**+:  .. :*@@@@@%%%%%%%%@@@@@@@@@%@@@@@@@@@@@%*@@-     *@@@@%##\A    +@@@@@@@@@@@@#=%@@@@@%@@@@@@@@@@@@@@@@@@@%%%@@@@@@@%=@@*       :=*#*=.\A       =@@@@@@@*-.@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%@@@@@+%@%\A      .------:    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%@%.\A                  *@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@**@@@@%\A                   =@@@##@@@@@@@@@@@@@@@@@@@@@@@@@@*+%@@%=\A                     :+++%@@@@@@@@@@@@@@@@@@@@@@@@@%=+++%@@*:\A                      =+:  :-=+@@@*++++*###%###*+-.  .=+-:+@@%.\A                      ++       .%@@                    =+:  #@@.\A                      :+=       :@@-                    ++. .@@%\A                       -+=       @@*                    :+=  :@@+\A                        ++       @@*                    -+:   @@*\A                       .++      .@@-                   .++   .@@=\A                       =+-      +@@.                  .=+.   =@@=\A                                =++                          :==.\A \A "}
+62.50%,74.99%{content:"\A                                                           :   :\A                                                         ::##  @+\A                                                         %@@@*%@-\A                                                       :%@@@@@@@=\A                                                     :#@@@@@@@@@*-\A                                                  :=*@@@@@@@@@@@@@\A                                                   *@@@@@@@%#@@@@@*\A         ....                                   .@@@@@@@@@@#: :%@@@%-.\A              ...       .:=+*#%%%%%%%%%%#######*%@@@@@@@@%@@*   #@@@@@%+\A      --=++**+:  .. :*@@@@@%%%%%%%%@@@@@@@@@%@@@@@@@@@@@%*@@-     *@@@@%##\A    +@@@@@@@@@@@@#=%@@@@@%@@@@@@@@@@@@@@@@@@@%%%@@@@@@@%=@@*       :=*#*=.\A       =@@@@@@@*-.@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%@@@@@+%@%\A      .------:    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%@%.\A                  *@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#*@@@@%\A                   =@@@%*%@@@@@@@@@@@@@@@@@@@@@@@@@*+#@@%.\A                     :++++%@@@@@@@@@@@@@@@@@@@@@@@@%=+*%@@*\A                         =++-=*@@@*++++*###%###*+-.   -+*@@@=\A                          -+=. :%@@-                    =+#@@%-\A                           .++-  +@@*                    :++%@@*.\A                             :+=: .#@@+                    -+*%@@%*-.\A                               -++- -%@@+                    :=*#%@@@%\A                                 -=.  -%@@+                     -==.-:\A                                        +*+.\A \A \A "}
+75.00%,87.49%{content:"\A                                                          :   :\A                                                        ::##  @+\A                                                        %@@@*%@-\A                                                      :%@@@@@@@=\A                                                    :#@@@@@@@@@*-\A                                                 :=*@@@@@@@@@@@@@\A                                                   *@@@@@@@%#@@@@@*\A         ....                                   .@@@@@@@@@@#: :%@@@%-.\A              ...       .:=+*#%%%%%%%%%%#######*%@@@@@@@@%@@*   #@@@@@%+\A            ::.  .. :*@@@@@%%%%%%%%@@@@@@@@@%@@@@@@@@@@@%*@@-     *@@@@%##\A        -+%@@@@@@#+%@@@@@%@@@@@@@@@@@@@@@@@@@%%%@@@@@@@%=@@*       :=*#*=.\A      =@@@@@@@#+. @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%@@@@@+%@%\A    .**++@@#=.    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%@%.\A       :+-        *@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%#%@@@@%\A                   =@@@%*%@@@@@@@@@@@@@@@@@@@@@@@@#+*%@@%-\A                     :++++@@@@@@@@@@@@@@@@@@@@@@@@@%=+*#@@@=\A                        .++--=+@@@@#+++*###%###*+-.   -++*%@@#****++***##-\A                         .=++=-:=#@@#=                  -++=+++***###**++.\A                             .-=++*%@@@#-.                -++:\A                                   ..-+%@@@#+:              -=+=-:.\A                                         :=*#=                 .-=++.\A \A \A \A \A "}
+87.50%,100.00%{content:"\A                                                           :   :\A                                                         ::##  @+\A                                                         %@@@*%@-\A                                                       :%@@@@@@@=\A                                                     :#@@@@@@@@@*-\A                                                  :=*@@@@@@@@@@@@@\A                                                   *@@@@@@@%#@@@@@*\A         ....                                   .@@@@@@@@@@#: :%@@@%-.\A              ...       .:=+*#%%%%%%%%%%#######*%@@@@@@@@%@@*   #@@@@@%+\A            ::.  .. :*@@@@@%%%%%%%%@@@@@@@@@%@@@@@@@@@@@%*@@-     *@@@@%##\A        -+%@@@@@@#+%@@@@@%@@@@@@@@@@@@@@@@@@@%%%@@@@@@@%=@@*       :=*#*=.\A      =@@@@@@@#+. @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%@@@@@+%@%\A    .**++@@#=.    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%@%.\A       :+-        *@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@##@@@@%\A                   =@@%*%@@@@@@@@@@@@@@@@@@@@@@@@@%*+%@@%.\A                     :++*@@@@@@@@@@@@@@@@@@@@@@@@@@%=++%@@:\A                    .-+=   :-=#@@@+++++*###%###*+-.  .=+%@@%*+-.\A                .-+++-:        =@@#                    .=*#*#@@@@%%%%%%%%#\A              .=+=:             .%@%.                    .-+=:.:=++++++++-\A            .-+=.                 #@@-                      -++-.\A           .-=.                    *@@%+                      :=+=\A                                    .+%@*                       ..\A \A \A \A "}
+}
+@keyframes eggseed-horse-run{
+  from{transform:translateX(-100%)}
+  to{transform:translateX(calc(100vw + 55px))}
+}
+
+/* The shoulders, spine, neck and head rise and fall as the legs cycle.
+   Individual translate/rotate properties keep the cross-screen motion independent. */
+@keyframes eggseed-horse-body{
+  0%,100%{translate:0 4px;rotate:-.8deg}
+  12.5%{translate:1px 0;rotate:-.3deg}
+  25%{translate:2px -6px;rotate:.8deg}
+  37.5%{translate:1px -3px;rotate:.3deg}
+  50%{translate:0 4px;rotate:-.8deg}
+  62.5%{translate:-1px 0;rotate:-.3deg}
+  75%{translate:-2px -5px;rotate:.9deg}
+  87.5%{translate:-1px -1px;rotate:.2deg}
+}
+@media(max-width:680px){
+  .horse-parade::before{top:29%;font-size:8px;opacity:.20}
+  .horse-parade::after{top:78%;font-size:7px;opacity:.15}
+}
+@media(prefers-reduced-motion:reduce){
+  .horse-parade::before,.horse-parade::after{
+    animation:none !important;
+    transform:translateX(3vw);
+    translate:0 0;
+    rotate:0deg;
+  }
+}
+.home-page .greeting h2{
+  font:italic 700 14px/1.35 Georgia,"Times New Roman",serif;
+  text-align:center;margin:0 0 7px;
+}
+.home-page .greeting p{margin:0}
+
+/* Compact ASCII fish from the supplied art, replacing the welcome horse. */
+.home-page .home-fish{
+  display:block;
+  width:max-content;
+  max-width:100%;
+  margin:0 auto 11px;
+  padding:0;
+  font:clamp(5.3px,.65vw,7px)/1.04 "Courier New",monospace;
+  letter-spacing:0;
+  white-space:pre;
+  text-align:left;
+  overflow:hidden;
+  color:#141414;
+}
+.home-page .homestead-intro{display:flex;flex-direction:column;align-items:stretch;gap:3px}
+
+/* Every action link has the understated [ read ] treatment:
+   a literal bracket label, monochrome link, no button outline or fill. */
+.button-small,
+.record-link,
+.post .more,
+.maker-actions button,
+.maker-drop label{
+  display:inline-block;
+  box-sizing:border-box;
+  max-width:100%;
+  margin:0;
+  padding:0!important;
+  border:0!important;
+  outline:0;
+  box-shadow:none!important;
+  border-radius:0!important;
+  background:transparent!important;
+  color:#222!important;
+  font:10px/1.5 "Courier New",monospace!important;
+  text-align:center;
+  text-decoration:underline dotted;
+  text-underline-offset:3px;
+  cursor:pointer;
+}
+.button-small:hover,
+.record-link:hover,
+.post .more:hover,
+.maker-actions button:hover:not(:disabled),
+.maker-drop label:hover{
+  background:#111!important;
+  color:#fff!important;
+  text-decoration:none;
+}
+.button-small:focus-visible,
+.record-link:focus-visible,
+.post .more:focus-visible,
+.maker-actions button:focus-visible,
+.maker-drop input:focus-visible{
+  outline:2px solid #111!important;
+  outline-offset:3px;
+}
+.maker-actions button:disabled{
+  color:#999!important;
+  cursor:not-allowed;
+  opacity:.55;
+}
+.maker-actions{column-gap:13px;row-gap:8px}
+.home-page .ascii-side-panel .button-small{font-size:10px!important;line-height:1.5!important;padding:0!important}
+.home-page .minibox a[href="archive.html"]{font:10px/1.5 "Courier New",monospace}
+@media(max-width:420px){
+  .home-page .home-fish{font-size:5.3px}
+}
+
+
+/* October archive update — subtle ASCII navigation, dated blog index,
+   and photo-first clickable record cabinet. */
+.navbox .navrow::before{
+  content:"+";
+  display:inline-block;
+  width:13px;
+  margin-right:4px;
+  color:#777;
+  font:10px/1 "Courier New",monospace;
+  text-align:center;
+}
+.navbox .navrow.active::before{content:">";color:#111;font-weight:bold}
+.navbox .navrow:hover::before{color:inherit}
+.centerframe::after{
+  content:none!important;
+  display:none!important;
+}
+.centerframe{padding-bottom:11px!important}
+
+/* Old-web blog: month heading + compact date/title rows, not cards. */
+.blog-index .section-head{margin-bottom:8px}
+.blog-intro{text-align:center;padding:3px 0 9px;border-bottom:1px dotted #bbb}
+.blog-intro p{margin:0 0 3px;font-size:10px}
+.blog-intro .file-tag{color:#777}
+.blog-index-year{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:8px;
+  margin:14px 0 7px;
+  border-bottom:1px dashed #666;
+  padding-bottom:3px;
+}
+.blog-index-year h2{font:700 14px/1.2 Georgia,"Times New Roman",serif}
+.blog-index-year span{font:9px/1.4 "Courier New",monospace;color:#777}
+.blog-month h3{font:italic 12px Georgia,"Times New Roman",serif;margin:5px 0 0;text-align:left}
+.blog-index-list{list-style:none;margin:3px 0 0;padding:0}
+.blog-index-list li{
+  display:grid;
+  grid-template-columns:37px minmax(0,1fr);
+  column-gap:10px;
+  border-bottom:1px dotted #bcbcbc;
+  padding:9px 2px;
+  align-items:start;
+}
+.blog-index-list li:last-child{border-bottom:0}
+.blog-index-list time{font:9px/1.6 "Courier New",monospace;color:#777}
+.blog-index-list a{font:700 11px/1.4 Georgia,"Times New Roman",serif;text-decoration:underline dotted;text-underline-offset:2px}
+.blog-index-list p{font-size:10px;line-height:1.48;margin:3px 0 0;color:#505050}
+.blog-index-foot{display:flex;justify-content:space-between;gap:5px;align-items:center;border-top:1px dotted #777;margin-top:8px;padding-top:8px}
+.blog-index-foot span{font:9px "Courier New",monospace;color:#777}
+.blog-index-foot a{font:9px "Courier New",monospace}
+
+/* Records: image thumbnails are the primary selectors. */
+.record-index-intro{font-size:10px;line-height:1.6;text-align:center;padding:0 0 9px;margin:0}
+.record-index-top{
+  display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px;
+  font:9px/1.4 "Courier New",monospace;color:#666;
+  border-top:1px dotted #aaa;border-bottom:1px dotted #aaa;
+  padding:5px 0;margin:3px 0 10px;
+}
+.record-gallery{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  column-gap:10px;row-gap:14px;list-style:none;margin:0;padding:0;
+}
+.record-grid-item{margin:0;min-width:0;text-align:center}
+.record-thumbnail-link{display:block;text-decoration:none;color:#222;outline-offset:3px}
+.record-thumbnail-link img{
+  display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;
+  border:1px solid #b0b0b0;background:#f3f3f3;
+  filter:grayscale(1);
+}
+.record-grid-id{display:block;margin-top:5px;font:700 10px/1.4 "Courier New",monospace;color:#222}
+.record-grid-caption{display:block;font:9px/1.4 "Courier New",monospace;color:#777}
+.record-thumbnail-link:hover{background:transparent;color:#111}
+.record-thumbnail-link:hover img{outline:1px dashed #333;outline-offset:2px}
+.record-thumbnail-link:hover .record-grid-id{text-decoration:underline dotted}
+.record-thumbnail-link:focus-visible{outline:2px solid #111}
+.record-index-note{
+  font:9px/1.65 "Courier New",monospace;color:#666;text-align:center;
+  border-top:1px dotted #bbb;padding:11px 2px 0;margin:14px 0 7px;
+}
+.record-index-footer{text-align:center;font:9px "Courier New",monospace;margin:0}
+.record-index-footer span{color:#999;margin:0 6px}
+
+/* A selected record opens to a complete template for the real scan/data. */
+.record-detail-page .catalog-back{text-align:left;margin:0 0 8px;font:9px "Courier New",monospace}
+.record-detail-figure{margin:8px 0 12px;text-align:center}
+.record-detail-figure img{
+  display:block;width:min(100%,270px);height:auto;aspect-ratio:1/1;
+  margin:0 auto;object-fit:contain;border:1px dotted #999;
+}
+.record-detail-figure figcaption{font:9px/1.4 "Courier New",monospace;color:#666;margin-top:6px}
+.record-fields{margin:13px 0}
+.record-fields h2{font:700 12px Georgia,"Times New Roman",serif;border-bottom:1px dashed #999;padding-bottom:5px;text-align:center}
+.record-fields dl{margin:2px 0}
+.record-fields dl>div{display:grid;grid-template-columns:41% 59%;border-bottom:1px dotted #bbb;padding:5px 3px;font-size:10px}
+.record-fields dt{color:#666;font:9px/1.5 "Courier New",monospace}
+.record-fields dd{margin:0;overflow-wrap:anywhere}
+.record-detail-page .note{overflow-wrap:anywhere}
+.catalog-neighbors{display:flex;justify-content:space-between;gap:7px;padding-top:8px;margin-top:9px;border-top:1px dotted #999;font:9px "Courier New",monospace}
+@media(max-width:420px){
+  .record-gallery{column-gap:7px;row-gap:11px}
+  .record-grid-caption{font-size:8px}
+}
+
+
+/* ASCII workbench v2: large-column photographic ASCII output.
+   Preserves monospace geometry at 80–1200 columns. */
+.maker-page .maker-settings-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.maker-page .maker-width-control{min-width:0}
+.maker-page .maker-width-control label{display:block;clear:both}
+.maker-page .maker-width-control output{float:right;font-weight:bold}
+.maker-page .maker-width-control input[type=range]{width:100%}
+.maker-page .maker-width-control .maker-number-label{display:inline;margin:0 5px 0 0;float:none}
+.maker-page .maker-width-control input[type=number]{
+  display:inline-block;width:74px;max-width:60%;padding:3px 5px;
+  border:1px dashed #777;background:#fff;color:#111;
+  border-radius:0;font:11px/1.4 "Courier New",monospace;
+}
+.maker-page .maker-presets{
+  display:flex;flex-wrap:wrap;justify-content:center;
+  align-items:center;gap:5px 11px;margin:11px 0 7px;
+  font:10px/1.5 "Courier New",monospace;
+}
+.maker-page .maker-presets button,
+.maker-page .maker-view-controls button{
+  border:0!important;background:transparent!important;box-shadow:none!important;
+  color:#111;font:10px/1.5 "Courier New",monospace;
+  padding:0!important;border-radius:0;
+  text-decoration:underline dotted;text-underline-offset:3px;cursor:pointer;
+}
+.maker-page .maker-presets button:hover,
+.maker-page .maker-view-controls button:hover{color:#fff;background:#111!important;text-decoration:none}
+.maker-page .maker-presets button:focus-visible,
+.maker-page .maker-view-controls button:focus-visible,
+.maker-page .maker-width-control input:focus-visible{outline:2px solid #111;outline-offset:2px}
+.maker-page .maker-enhancements{
+  display:flex;align-items:center;flex-wrap:wrap;gap:5px 14px;
+  padding:7px 2px 4px;
+  border-top:1px dotted #bbb;
+}
+.maker-page .maker-enhancements label{font:10px/1.4 "Courier New",monospace;cursor:pointer}
+.maker-page .maker-enhancements input{accent-color:#111;vertical-align:middle}
+.maker-page .maker-view-controls{
+  display:flex;flex-wrap:wrap;gap:5px 10px;align-items:center;
+  font:10px/1.3 "Courier New",monospace;margin:5px 0 9px;
+}
+.maker-page .maker-view-controls input[type=range]{flex:1;min-width:55px;max-width:150px;accent-color:#111}
+.maker-page .maker-view-controls output{color:#444}
+.maker-page .maker-output{
+  display:block;
+  width:100%;min-width:0;max-width:100%;
+  height:clamp(350px,65vh,720px);
+  white-space:pre!important;
+  overflow-x:auto!important;
+  overflow-y:auto!important;
+  overflow-wrap:normal!important;
+  word-break:normal!important;
+  line-height:1.08!important;
+  tab-size:4;
+  resize:vertical;
+  font-family:"Courier New",monospace!important;
+  font-size:7px;
+  padding:7px;
+  background:#fff;
+  letter-spacing:0;
+}
+.maker-page.maker-wide .site{width:min(98vw,1760px)}
+.maker-page.maker-wide .columns{grid-template-columns:145px minmax(0,1fr) 145px}
+.maker-page.maker-wide .center-col,.maker-page.maker-wide .centerframe{min-width:0}
+.maker-page.maker-wide .maker-output{height:clamp(400px,75vh,880px)}
+@media(max-width:680px){
+  .maker-page.maker-wide .site{width:98vw}
+  .maker-page.maker-wide .columns{grid-template-columns:1fr}
+  .maker-page .maker-view-controls{gap:5px 8px}
+  .maker-page .maker-presets{gap:6px 8px}
+}
+@media(max-width:360px){
+  .maker-page .maker-settings-grid{grid-template-columns:1fr}
+}
+
+
+/* Mobile desktop-layout preservation, 2026-10.
+   Default: fit the original three columns into a phone.
+   Checkbox: keep the same three columns at normal text size and pan horizontally.
+   Pure HTML/CSS; no extra JavaScript or layout jumping between columns. */
+.mobile-view-toggle,.mobile-view-label{display:none}
+@media(max-width:680px){
+  html{overflow-x:auto}
+  body{min-width:0;overflow-x:auto}
+  .mobile-view-toggle{
+    display:block;position:absolute;left:-9999px;top:auto;
+    width:1px;height:1px;opacity:0;
+  }
+  .mobile-view-label{
+    display:block;position:relative;z-index:8;
+    width:max-content;max-width:calc(100vw - 12px);
+    margin:6px auto 4px;padding:2px 5px;
+    background:rgba(255,255,255,.97);
+    border:1px dotted #888;
+    font:10px/1.4 "Courier New",monospace;
+    text-decoration:underline dotted;cursor:pointer;
+    color:#111;text-align:center;
+  }
+  .mobile-view-label .mobile-return-text{display:none}
+  .mobile-view-toggle:checked + .mobile-view-label .mobile-full-text{display:none}
+  .mobile-view-toggle:checked + .mobile-view-label .mobile-return-text{display:inline}
+  .mobile-view-toggle:focus-visible + .mobile-view-label{
+    outline:2px solid #111;outline-offset:2px
+  }
+  .site,.maker-page .site,.maker-page.maker-wide .site{
+    box-sizing:border-box;
+    width:632px!important;max-width:none!important;
+    margin:9px auto 24px!important;
+    zoom:.95;
+  }
+  .site .columns,.maker-page .columns,.maker-page.maker-wide .columns{
+    display:grid!important;
+    grid-template-columns:145px minmax(0,1fr) 145px!important;
+    gap:11px!important;
+    align-items:stretch!important;
+  }
+  .site .left-col,.site .center-col,.site .right-col{
+    display:flex!important;flex-direction:column!important;
+    min-width:0;min-height:0;align-self:stretch;
+  }
+  .site .left-col>.panel:last-child,
+  .site .right-col>.panel:last-child{
+    flex-grow:1;margin-bottom:0;
+  }
+  .site .centerframe{min-width:0;min-height:0;flex:1}
+  .site .navbox .inner{display:block!important}
+  .site .navbox .panel-label{display:block}
+  .site .site-header{height:86px;gap:15px;margin-bottom:12px}
+  .site .site-name.ascii-title pre{font-size:9px!important}
+  .site .header-horse{display:block!important;font-size:9px!important}
+  .site .home-page .double-mini,.home-page .double-mini{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  }
+  .home-page .home-fish{font-size:7px!important}
+  .maker-page .maker-settings-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .maker-page .maker-output{
+    min-width:0;max-width:100%;
+    overflow-x:auto!important;white-space:pre!important
+  }
+  /* The checkbox follows the top of body, so the original fixed size can
+     safely overflow the phone horizontally and be inspected by swiping. */
+  .mobile-view-toggle:checked ~ .site{
+    zoom:1!important;
+    width:632px!important;max-width:none!important;
+    margin:9px 8px 24px!important;
+  }
+  .maker-page.maker-wide .site{width:632px!important}
+}
+@media(max-width:609px){
+  .site,.maker-page .site,.maker-page.maker-wide .site{zoom:.84}
+}
+@media(max-width:539px){
+  .site,.maker-page .site,.maker-page.maker-wide .site{zoom:.75}
+}
+@media(max-width:479px){
+  .site,.maker-page .site,.maker-page.maker-wide .site{zoom:.66}
+}
+@media(max-width:419px){
+  .site,.maker-page .site,.maker-page.maker-wide .site{zoom:.58}
+}
+@media(max-width:369px){
+  .site,.maker-page .site,.maker-page.maker-wide .site{zoom:.51}
+}
+@media(max-width:324px){
+  .site,.maker-page .site,.maker-page.maker-wide .site{zoom:.46}
+}
+
+
+/* One-column review listing and long-form liner-note style.
+   Keeps eggseed's original three-column site and mobile pan layout. */
+.reviews-index .review-entry{
+  padding:7px 2px 12px;
+  border-bottom:1px dotted #999;
+}
+.review-entry-type,.review-category{
+  font:9px/1.5 "Courier New",monospace;
+  color:#777;
+  margin:0 0 5px;
+  letter-spacing:.02em;
+}
+.review-entry h2{
+  font:700 15px/1.25 Georgia,"Times New Roman",serif;
+  margin:0 0 4px;
+}
+.review-entry h2 a{text-decoration:underline dotted;text-underline-offset:3px}
+.review-entry-credit{font-size:10px;color:#555;margin:0 0 10px}
+.review-entry-excerpt{font:10px/1.6 "Trebuchet MS",Tahoma,sans-serif;margin:0 0 8px}
+.review-entry-read{text-align:right;margin:0;font:10px "Courier New",monospace}
+.review-article{padding:10px 10px 13px}
+.review-back{font:9px/1.4 "Courier New",monospace;margin:0 0 11px}
+.review-back-bottom{margin:12px 0 0;border-top:1px dotted #999;padding-top:10px;text-align:center}
+.review-heading h1{
+  font:700 20px/1.18 Georgia,"Times New Roman",serif;
+  text-align:center;letter-spacing:-.02em;
+  overflow-wrap:break-word;
+  margin:4px 0 13px;
+}
+.review-heading .review-category{text-align:center}
+.review-metadata{
+  width:100%;border-collapse:collapse;
+  font:10px/1.5 "Courier New",monospace;
+  margin:0 0 18px;
+  border-top:1px dotted #888;
+  border-bottom:1px dotted #888;
+  table-layout:fixed;
+}
+.review-metadata tr+tr{border-top:1px dotted #ccc}
+.review-metadata th{
+  color:#666;font-weight:normal;text-align:left;
+  vertical-align:top;width:31%;
+  padding:6px 4px 6px 0;
+}
+.review-metadata td{
+  padding:6px 0 6px 4px;
+  overflow-wrap:break-word;
+  vertical-align:top;
+}
+.review-body p{
+  font:11px/1.77 "Trebuchet MS",Tahoma,Verdana,sans-serif;
+  margin:0 0 12px;
+  overflow-wrap:break-word;
+}
+.review-body .review-opening{
+  font-style:italic;
+  border-bottom:1px dotted #bbb;
+  padding-bottom:14px;
+  margin-bottom:17px;
+}
+.review-body section{margin:15px 0 20px}
+.review-body h2{
+  font:700 14px/1.3 Georgia,"Times New Roman",serif;
+  margin:0 0 10px;padding:0 0 7px;
+  border-bottom:1px dotted #999;
+}
+.review-body .review-lyrics{
+  margin:12px 0 14px;
+  padding:5px 0 5px 13px;
+  border-left:2px solid #777;
+  background:transparent;
+}
+.review-body .review-lyrics p{
+  margin:0;font:italic 11px/1.65 Georgia,"Times New Roman",serif;
+}
+.review-body section:last-child{margin-bottom:0}
+
+
+/* Review artwork from the record label: naturally scaled to eggseed's center column. */
+.review-cover{
+  width:min(100%,228px);
+  margin:2px auto 17px;
+  text-align:center;
+}
+.review-cover a{display:block;background:transparent}
+.review-cover img{
+  display:block;width:100%;height:auto;aspect-ratio:1;
+  object-fit:cover;
+  border:1px solid #a9a9a9;
+  box-shadow:none;
+  background:#eee;
+}
+.review-cover figcaption{
+  font:9px/1.5 "Courier New",monospace;
+  color:#666;padding-top:5px;
+}
+.review-cover figcaption a{display:inline}
+.review-entry-with-art{
+  display:grid;
+  grid-template-columns:70px minmax(0,1fr);
+  gap:10px;
+  align-items:start;
+}
+.review-entry-cover{display:block;line-height:0;background:transparent}
+.review-entry-cover img{
+  display:block;width:100%;height:auto;aspect-ratio:1;
+  border:1px solid #aaa;object-fit:cover;background:#eee;
+}
+.review-entry-copy{min-width:0}
+.review-entry-with-art h2{font-size:13px}
+.review-entry-with-art .review-entry-credit{margin-bottom:5px}
+.review-entry-with-art .review-entry-excerpt{font-size:10px;line-height:1.5}
+
+
+/* Small dated update log beneath wave hello. */
+.update-log-panel{margin-top:0}
+.update-log-panel .inner{padding:6px 7px}
+.update-log-panel .update-log-date{
+  color:#777;
+  font:9px/1.5 "Courier New",monospace;
+  margin:0 0 5px;
+  border-bottom:1px dotted #bcbcbc;
+  padding-bottom:3px;
+}
+.update-log-panel .update-log-note{
+  font:10px/1.55 "Trebuchet MS",Tahoma,sans-serif;
+  margin:0;
+  overflow-wrap:break-word;
+}
+
+
+/* Imported original 45rpm collection: photographic cabinet, compact labels. */
+.record-gallery .record-import-tile{min-width:0}
+.record-import-tile .record-thumbnail-link{text-decoration:none}
+.record-import-tile .record-photo-wrap{
+  display:block;position:relative;width:100%;aspect-ratio:1;
+  border:1px solid #aaa;background:#f3f3f3;overflow:hidden;
+}
+.record-import-tile .record-photo-wrap img{
+  position:absolute;inset:0;display:block;width:100%;height:100%;
+  object-fit:cover;filter:grayscale(1);border:0;background:transparent;color:transparent;
+}
+.record-import-tile .record-thumbnail-fallback{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font:9px/1.4 "Courier New",monospace;color:#555;text-align:center;padding:8px;
+}
+.record-import-tile .record-grid-id{
+  margin-top:5px;font:700 10px/1.35 Georgia,"Times New Roman",serif;
+  text-decoration:underline dotted;text-underline-offset:2px;
+  overflow-wrap:anywhere;
+}
+.record-import-tile .record-grid-caption{margin-top:3px;color:#555;overflow-wrap:anywhere}
+.record-import-tile .record-grid-date{
+  display:block;margin-top:4px;color:#888;
+  font:8px/1.3 "Courier New",monospace;
+}
+.record-import-tile a:hover img{filter:none}
+.record-import-tile a:hover{background:transparent}
+.record-import-tile a:hover .record-grid-id{text-decoration:underline}
+.record-detail-page.record-imported .section-head{
+  font:700 13px/1.35 Georgia,"Times New Roman",serif;
+  overflow-wrap:anywhere;
+}
+.record-imported .record-detail-title{
+  font:italic 11px/1.45 Georgia,"Times New Roman",serif;
+  text-align:center;margin:8px 0 13px;overflow-wrap:anywhere;
+}
+.record-imported-figure{margin:0 auto 14px;width:100%;text-align:center}
+.record-detail-photo{
+  position:relative;
+  width:min(100%,265px);margin:0 auto;aspect-ratio:1;overflow:hidden;
+  background:#f3f3f3;border:1px solid #aaa;
+}
+.record-detail-photo img{
+  position:absolute;inset:0;width:100%;height:100%;display:block;
+  object-fit:contain;background:transparent;color:transparent;
+}
+.record-photo-fallback{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  flex-direction:column;text-align:center;font:10px/1.6 "Courier New",monospace;
+  padding:9px;color:#666;
+}
+.record-photo-fallback a{display:inline}
+.record-imported-figure figcaption{margin-top:5px;color:#666;font:9px/1.4 "Courier New",monospace}
+.record-more-photos{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  width:min(100%,265px);gap:5px;margin:7px auto 0;
+}
+.record-alt-photo{display:block;min-width:0;aspect-ratio:1;border:1px dotted #aaa;background:#f5f5f5}
+.record-alt-photo img{width:100%;height:100%;display:block;object-fit:cover}
+.record-imported .record-fields h2{font:700 12px/1.4 Georgia,"Times New Roman",serif}
+.record-imported .record-fields dl>div{grid-template-columns:38% minmax(0,1fr);column-gap:3px}
+.record-imported .record-research{margin:12px 0}
+.record-imported .record-research p{
+  font:10px/1.6 "Trebuchet MS",Tahoma,sans-serif;color:#555;overflow-wrap:anywhere
+}
+.record-imported .record-source-links{
+  display:flex;flex-wrap:wrap;gap:4px 10px;
+  font:9px/1.6 "Courier New",monospace;
+}
+.record-imported .record-collection-notes{margin:14px 0}
+.record-imported .record-collection-notes p{
+  font:10px/1.65 "Trebuchet MS",Tahoma,sans-serif;margin:0 0 10px;overflow-wrap:anywhere
+}
+.record-imported .record-imported-date{
+  margin:12px 0 4px;color:#777;text-align:center;
+  font:9px/1.4 "Courier New",monospace
+}
+
+
+/* about page: keep the writer's voice, add an analog 45 and a compact directory */
+.about-page .about-intro p{
+  font:11px/1.75 "Trebuchet MS",Tahoma,Verdana,sans-serif;
+  margin:0 0 12px;
+  overflow-wrap:break-word;
+}
+.about-page .about-45{
+  font:10px/1.05 "Courier New",monospace;
+  margin:12px auto 14px;
+  padding:8px 0;
+  text-align:center;
+  white-space:pre;
+  overflow:visible;
+  color:#303030;
+  border-block:1px dotted #aaa;
+}
+.about-page .about-links{margin:12px 0 4px}
+.about-page .about-links h2{margin-bottom:9px}
+.about-page .about-links ul{list-style:none;padding:0;margin:0}
+.about-page .about-links li{
+  border-bottom:1px dotted #ccc;
+  padding:8px 0;
+  display:flex;flex-wrap:wrap;gap:2px 7px;
+  justify-content:space-between;align-items:baseline;
+}
+.about-page .about-links li a{font:10px/1.35 "Courier New",monospace}
+.about-page .about-links li span{font:9px/1.35 "Courier New",monospace;color:#777}
+
+/* About page: selectable text artwork, not a raster image. */
+.about-page .about-art{margin:12px auto 14px;padding:8px 0;border-block:1px dotted #aaa;display:flex;justify-content:center;max-width:100%;min-width:0;overflow:hidden}
+.about-page .about-horse-ascii{display:block;flex:none;margin:0;padding:0;border:0;background:transparent;color:#222;font:400 6.2px/1 "Courier New",Courier,monospace;letter-spacing:0;text-align:left;white-space:pre}
+@media(max-width:560px){.about-page .about-horse-ascii{font-size:clamp(4px,1.75vw,6.2px)}}
+
+/* Loose interests & collected things share one little archive. */
+.archive-page .archive-lede{font:11px/1.7 "Trebuchet MS",Tahoma,Verdana,sans-serif;margin:2px 0 15px;overflow-wrap:break-word}
+.archive-page .archive-loose-notes{padding:10px 0 15px;border-top:1px dotted #aaa}
+.archive-page .archive-loose-notes .subhead,.archive-page .archive-collection .subhead{margin:0 0 8px}
+.archive-page .archive-loose-notes p{font:10px/1.6 "Courier New",monospace;color:#555;margin:0}
+.archive-page .archive-collection{padding:11px 0 0;border-top:1px dotted #aaa}
+.archive-page .archive-collection .block-art{margin:8px auto 12px}
+.archive-page .archive-collection .file-row{padding:8px 2px}
+.archive-page .archive-collection .file-title{margin:0}
+
+/* One consistent seven-item navigation list across the site. */
+.navbox nav{display:flex;flex-direction:column;align-items:stretch}
+.navbox .navrow{display:block;box-sizing:border-box;white-space:nowrap}
+.navbox .navrow::before{box-sizing:border-box;flex:none}
+@media(max-width:680px){.site .navbox .inner{display:block!important}}
+/* Minimal on-site guestbook comments powered by a hosted comment service. */
+.guestbook-page{min-width:0}
+.guestbook-page #HCB_comment_box{font:10px/1.5 "Courier New",Courier,monospace;color:#222;min-height:120px;overflow-wrap:anywhere}
+.guestbook-page #HCB_comment_box h3,.guestbook-page #HCB_comment_box h4{font:700 11px/1.5 Georgia,serif;color:#222;margin:0 0 9px}
+.guestbook-page #HCB_comment_box input:not([type="checkbox"]):not([type="radio"]),.guestbook-page #HCB_comment_box textarea{display:block;box-sizing:border-box;max-width:100%;width:100%;padding:7px;border:1px dashed #999;border-radius:0;background:#fff;color:#222;font:11px/1.5 "Courier New",monospace}
+.guestbook-page #HCB_comment_box input[type="submit"],.guestbook-page #HCB_comment_box button{width:auto!important;max-width:100%;padding:6px 10px;border:1px solid #777;border-radius:0;background:#f8f8f8;color:#111;font:10px "Courier New",monospace;cursor:pointer}
+.guestbook-page #HCB_comment_box .comment,.guestbook-page #HCB_comment_box .hcb-comment-tb,.guestbook-page #HCB_comment_box blockquote{border:0;border-bottom:1px dotted #aaa;box-shadow:none}
+.guestbook-page #HCB_comment_box a{overflow-wrap:anywhere}
+.guestbook-page #HCB_comment_box .hcb-icon{max-width:16px;max-height:16px}
+
+/* Personal essay reading pages: simple typewritten journal layout. */
+.blog-entry .blog-entry-back{margin:0 0 11px;font:9px/1.5 "Courier New",monospace}
+.blog-entry .blog-entry-heading{border-bottom:1px dotted #aaa;padding:0 0 12px;margin:0 0 17px;text-align:left}
+.blog-entry .blog-entry-heading h1{font:700 16px/1.4 Georgia,"Times New Roman",serif;margin:0 0 6px;overflow-wrap:anywhere}
+.blog-entry .blog-entry-heading p{margin:0;font:9px/1.4 "Courier New",monospace;color:#777}
+.blog-entry .blog-entry-body p{font:11px/1.85 "Trebuchet MS",Tahoma,Verdana,sans-serif;margin:0 0 17px;overflow-wrap:break-word}
+.blog-entry .blog-entry-body em{font-style:italic}
+.blog-entry .blog-entry-bottom{border-top:1px dotted #aaa;padding-top:11px;margin:7px 0 0}
+
+/* ASCII-style guestbook controls, including third-party injected form labels. */
+.guestbook-page #HCB_comment_box,
+.guestbook-page #HCB_comment_box form,
+.guestbook-page #HCB_comment_box label,
+.guestbook-page #HCB_comment_box input,
+.guestbook-page #HCB_comment_box textarea,
+.guestbook-page #HCB_comment_box button{font-family:"Courier New",Courier,monospace!important}
+.guestbook-page #HCB_comment_box label{font-size:10px!important;color:#333!important;letter-spacing:0!important}
+.guestbook-page #HCB_comment_box #hcb_form_name,
+.guestbook-page #HCB_comment_box #hcb_form_content{border:1px dashed #777!important;border-radius:0!important;background:#fff!important;box-shadow:none!important;font-size:11px!important}
+.guestbook-page #HCB_comment_box form a,
+.guestbook-page #HCB_comment_box .hcb-add-image,
+.guestbook-page #HCB_comment_box .hcb-image-btn,
+.guestbook-page #HCB_comment_box .hcb-upload-link{
+ display:inline-block!important;padding:3px 5px!important;
+ border:1px dotted #aaa!important;border-radius:0!important;
+ color:#111!important;background:#fff!important;text-decoration:none!important;
+ font:10px/1.4 "Courier New",Courier,monospace!important;
+ box-shadow:none!important;
+}
+.guestbook-page #HCB_comment_box form a:hover,
+.guestbook-page #HCB_comment_box form a:focus-visible{background:#f0f0f0!important;text-decoration:underline!important}
+.guestbook-page #HCB_comment_box #hcb_submit,
+.guestbook-page #HCB_comment_box .submit{width:auto!important;max-width:100%!important;border:1px solid #777!important;border-radius:0!important;background:#fafafa!important;color:#111!important;font:10px/1.4 "Courier New",Courier,monospace!important;box-shadow:none!important}
+
+.tags-page .tags-intro{font:10px/1.6 "Courier New",monospace;color:#666;margin:6px 0 13px}
+.tags-page #tag-filter{display:flex;gap:6px;flex-wrap:wrap;border-bottom:1px dotted #bbb;padding:8px 0 11px;margin-bottom:7px}
+.tags-page #tag-filter a{font:10px/1.3 "Courier New",monospace;display:inline-block;text-decoration:none;border:1px dotted #999;padding:3px 5px}
+.tags-page #tag-filter a.is-current{background:#eee;border-color:#333}

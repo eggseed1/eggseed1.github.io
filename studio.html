@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><meta name="robots" content="noindex,nofollow"><meta name="description" content="eggseed post editor."><title>studio | eggseed</title><link rel="stylesheet" href="style.css"><link rel="icon" type="image/svg+xml" href="favicon.svg"></head>
+<body class="studio-page"><input type="checkbox" id="eggseed-mobile-size" class="mobile-view-toggle" aria-label="Show original-size site with horizontal scrolling"><label for="eggseed-mobile-size" class="mobile-view-label"><span class="mobile-full-text">[ full size / scroll ]</span><span class="mobile-return-text">[ fit to screen ]</span></label><div class="horse-parade" aria-hidden="true"><pre class="running-horse runner-one">                     __,,--.
+           __  _.-''      /  \_
+     __.-'   '-._    _   (o  _)
+  .-'    __      '--' \    \-'
+ /     _/  '-._        \___/
+ \  __/       /   _    \
+  '-'        /   / \    \
+           _/  _/   \   _\
+          /___/      \___\</pre><pre class="running-horse runner-two">                     __,,--.
+           __  _.-''      /  \_
+     __.-'   '-._    _   (o  _)
+  .-'    __      '--' \    \-'
+ /     _/  '-._        \___/
+ \  __/       /   _    \
+  '-'        /   / \    \
+           _/  _/   \   _\
+          /___/      \___\</pre><pre class="running-horse runner-three">                     __,,--.
+           __  _.-''      /  \_
+     __.-'   '-._    _   (o  _)
+  .-'    __      '--' \    \-'
+ /     _/  '-._        \___/
+ \  __/       /   _    \
+  '-'        /   / \    \
+           _/  _/   \   _\
+          /___/      \___\</pre></div>
+
+
+<div class="site">
+<header class="site-header" aria-label="eggseed"><pre class="header-horse header-horse-left" aria-hidden="true">     ,//
+ .-./o \
+/___    )
+    /  /
+   /__/</pre><a class="site-name ascii-title" href="index.html" aria-label="eggseed - home"><pre aria-hidden="true">#####   ####   ####   ####  #####  #####  #### 
+#      #      #      #      #      #      #   #
+####   # ###  # ###   ###   ####   ####   #   #
+#      #   #  #   #      #  #      #      #   #
+#####   ####   ####  ####   #####  #####  #### </pre></a><pre class="header-horse header-horse-right" aria-hidden="true">   \\,
+  / o\\.-.
+ (    ___\\
+  \\  \\
+   \\__\\</pre><div class="header-undertype" aria-hidden="true">*     .     *     .     *</div></header>
+<main class="studio-shell" id="content">
+<header class="studio-title"><p class="studio-eyebrow">* private editing workspace / public code *</p><h1>eggseed / studio</h1>
+<p>write, tag, edit, preview, and publish your posts without leaving the browser.</p></header>
+<section class="studio-connect-panel" aria-labelledby="studio-connect-heading">
+<h2 id="studio-connect-heading">01 / connect</h2>
+<p>Use a <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener noreferrer">fine-grained GitHub token</a> for <strong>eggseed1/eggseed</strong>, with <strong>Contents: read and write</strong>. The token is used directly with GitHub and kept in this tab’s memory, never saved by the site.</p>
+<div class="studio-connect-row"><label for="studio-token">[ github token ]</label><input id="studio-token" type="password" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="github_pat_..."><button id="studio-connect" type="button">[ connect ]</button><button id="studio-disconnect" type="button">[ disconnect ]</button></div>
+<p id="studio-connection" class="studio-connection">not connected</p>
+<p class="studio-warning">this URL is publicly accessible even though only you can publish with your GitHub credentials. drafts are stored in your public repository, so don't put private information in drafts.</p>
+</section>
+<div id="studio-locked" class="studio-locked"><pre aria-hidden="true">   .--------------.
+   |  *  *  *  *  |
+   | [  LOCKED  ] |
+   '--------------'</pre><p>connect to start writing.</p></div>
+<div id="studio-workspace" class="studio-workspace" hidden>
+<aside class="studio-library" aria-label="post library"><div class="studio-library-head"><h2>02 / posts</h2><button type="button" id="studio-new">[ + new ]</button></div>
+<input id="studio-search" type="search" placeholder="search posts or tags..." aria-label="Search posts">
+<div class="studio-post-list" id="studio-post-list"></div>
+</aside>
+<section class="studio-editor" aria-labelledby="studio-form-heading">
+<h2 id="studio-form-heading">new post</h2>
+<form id="studio-form" autocomplete="off">
+<div class="studio-fields">
+<label class="studio-field wide" for="studio-title">title<input id="studio-title" name="title" maxlength="160" required placeholder="a little thought about..."></label>
+<label class="studio-field" for="studio-section">section<select id="studio-section" name="section"><option value="blog">blog</option><option value="writings">archive / writings</option><option value="reviews">reviews</option><option value="scans">scans &amp; photos</option><option value="photos">photographs</option></select></label>
+<label class="studio-field" for="studio-date">date<input id="studio-date" type="date" name="date" required></label>
+<label class="studio-field" for="studio-slug">url slug<input id="studio-slug" name="slug" pattern="[a-z0-9]+(-[a-z0-9]+)*" maxlength="65" required placeholder="my-new-post"></label>
+<label class="studio-field" for="studio-tags">tags (comma separated)<input id="studio-tags" name="tags" maxlength="500" placeholder="music, country, little things"></label>
+<label class="studio-field wide" for="studio-excerpt">short description (optional)<input id="studio-excerpt" name="excerpt" maxlength="300" placeholder="a few words for the post listing..."></label>
+<label class="studio-field wide" for="studio-image">cover image URL (optional)<input id="studio-image" name="image" type="url" placeholder="https://..."></label>
+<label class="studio-field wide" for="studio-body">post text / markdown<textarea id="studio-body" name="body" rows="17" spellcheck="true" placeholder="write your thoughts here...&#10;&#10;**bold**, *italic*, ## headings, - lists, [links](https://...)"></textarea></label>
+</div>
+<p class="studio-markdown-help">formatting: **bold** · *italic* · ## heading · - list · &gt; quote · [link](https://example.com)</p>
+<label class="studio-check" for="studio-published"><input id="studio-published" type="checkbox" checked> publish on site <small>(uncheck to save a draft)</small></label>
+<div class="studio-actions"><button type="submit" id="studio-save">[ save to github ]</button><button type="button" id="studio-preview-button">[ refresh preview ]</button><button type="button" id="studio-delete" disabled>[ delete post ]</button><a id="studio-open-link" target="_blank" rel="noopener noreferrer" hidden>[ view published post ]</a></div>
+</form>
+<section class="studio-preview-panel" aria-label="Live post preview"><h3>03 / preview</h3><div id="studio-preview" class="studio-preview"></div></section>
+</section>
+</div>
+<p class="studio-status" id="studio-status" role="status" aria-live="polite"></p>
+<footer class="studio-footer"><a href="index.html">[ back to eggseed ]</a><span>changes publish through GitHub Pages</span></footer>
+</main>
+
+</div><script src="studio.js" defer></script></body></html>

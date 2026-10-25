@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "posts": [
+    {
+      "id": "first-ramblings-october",
+      "title": "first ramblings // october?",
+      "section": "blog",
+      "slug": "first-ramblings-october",
+      "date": "2026-10-24",
+      "tags": [],
+      "excerpt": "",
+      "image": "",
+      "published": true,
+      "file": "blog/first-ramblings-october.html",
+      "source": "data/studio/first-ramblings-october.md"
+    }
+  ]
+}
