@@ -35,4 +35,19 @@ for (const breakpoint of [609,539,479,419,369,324]) {
   assert.ok(css.includes("@media(max-width:" + breakpoint + "px)"),
     "Missing fit breakpoint " + breakpoint);
 }
+// Mobile horse animation stays in a visible strip above the site,
+// with the desktop three-column layout and reduced-motion preference intact.
+assert.ok(css.includes(".mobile-view-label{margin-bottom:72px!important}"),
+  "Mobile needs clear space for background horses");
+assert.ok(css.includes(".horse-parade > .running-horse{"),
+  "Mobile ASCII horse elements must be visible");
+assert.ok(css.includes("animation:eggseed-mobile-horse-run 11s linear infinite!important"),
+  "Mobile background horses should cross the screen");
+assert.ok(css.includes(".horse-parade > .runner-three{display:none!important}"),
+  "Avoid stacking three animations on mobile");
+assert.ok(css.includes("prefers-reduced-motion:reduce"),
+  "Must honor reduced-motion preference");
+assert.ok(css.includes('.site .footer{\n    font:11px/1.55 "Trebuchet MS"'),
+  "Mobile footer should match content text size");
+
 console.log("Mobile layout OK: 44 pages preserve 3 columns; fit-to-screen + full-size pan available.");
