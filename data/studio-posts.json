@@ -13,6 +13,19 @@
       "published": true,
       "file": "blog/first-ramblings-october.html",
       "source": "data/studio/first-ramblings-october.md"
+    },
+    {
+      "id": "in-happy-thinking",
+      "title": "in happy thinking?",
+      "section": "blog",
+      "slug": "in-happy-thinking",
+      "date": "2026-10-26",
+      "tags": [],
+      "excerpt": "",
+      "image": "",
+      "published": true,
+      "file": "blog/in-happy-thinking.html",
+      "source": "data/studio/in-happy-thinking.md"
     }
   ]
 }
